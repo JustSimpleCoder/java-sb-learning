@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import x.yaobin.testservice.pojo.User;
 import x.yaobin.testservice.repostitory.UserRepository;
+import x.yaobin.testservice.service.user.UserService;
 
 import java.util.List;
 
@@ -48,5 +49,18 @@ public class ApiController {
         return listUser;
     }
 
+
+    @Autowired
+    UserService userService;
+
+    @RequestMapping("api/user-add-rollback")
+    public User userAddRollBack(User user){
+        return userService.saveWithRollBack(user);
+    }
+
+    @RequestMapping("api/user-add-no-rollback")
+    public User userAddNoRollBack(User user){
+        return userService.saveWithoutRollBack(user);
+    }
 
 }
