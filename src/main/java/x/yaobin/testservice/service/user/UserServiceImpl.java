@@ -1,13 +1,18 @@
 package x.yaobin.testservice.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import x.yaobin.testservice.pojo.User;
 import x.yaobin.testservice.repostitory.UserRepository;
 
 @Service
+@EnableScheduling
+@EnableCaching
 public class UserServiceImpl implements UserService {
+
 
     @Autowired
     UserRepository userRepository;
